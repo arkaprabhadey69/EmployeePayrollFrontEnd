@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Axios from "axios";
+import EmployeeService from '../service/EmployeeService';
 
 export class Form extends Component {
     constructor(props) {
@@ -52,7 +53,8 @@ export class Form extends Component {
             })
     }
     handleSubmit=(event) =>{
-        Axios.post('http://localhost:8080/emp/v1/insert', this.state)
+        // Axios.post('http://localhost:8080/emp/v1/insert', this.state)
+        EmployeeService.addEmployee(this.state)
         .then(res=>{
             console.log(res);
             alert(res.data.message);
